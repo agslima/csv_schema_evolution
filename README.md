@@ -202,7 +202,7 @@ docker-compose up --build
 ## 👨‍💻 Autor
 
 **Agnaldo Silva Lima**
-🔗 [LinkedIn](https://www.linkedin.com/in/agnaldo-silva-lima)
+🔗 [LinkedIn](https://www.linkedin.com/in/agslima)
 💡 Projeto desenvolvido com foco em usabilidade, segurança e boas práticas de engenharia de software.
 
 ---
