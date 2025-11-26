@@ -4,8 +4,7 @@
 
 Sistemas de classificação de dados
 
-````markdown
-# 📊 CSV Uploader – Full Stack App (Flask + MongoDB)
+# CSV Uploader – Full Stack App (Flask + MongoDB)
 
 Aplicação web para **upload, processamento e download de arquivos CSV**, com:
 - UI moderna e responsiva.
@@ -19,7 +18,7 @@ Aplicação web para **upload, processamento e download de arquivos CSV**, com:
 
 ---
 
-## 🧩 Arquitetura
+## Arquitetura
 
 ```text
 csv-uploader/
@@ -47,7 +46,7 @@ csv-uploader/
 
 ---
 
-## ⚙️ Funcionalidades
+## Funcionalidades
 
 * **Upload seguro de CSVs** (máx. 50 MB).
 * **Processamento backend Python**:
@@ -65,7 +64,7 @@ csv-uploader/
 
 ---
 
-## 🧠 Stack Tecnológica
+## Stack Tecnológica
 
 | Camada        | Tecnologia              |
 | ------------- | ----------------------- |
@@ -78,7 +77,7 @@ csv-uploader/
 
 ---
 
-## 🪄 Instalação Local
+## Instalação Local
 
 ### 1️⃣ Clonar o repositório
 
@@ -113,7 +112,7 @@ O app estará disponível em **[http://localhost:5000](http://localhost:5000)**
 
 ---
 
-## 💻 Uso
+## Uso
 
 1. Acesse a interface web.
 2. Faça upload de um ou mais arquivos CSV.
@@ -123,7 +122,7 @@ O app estará disponível em **[http://localhost:5000](http://localhost:5000)**
 
 ---
 
-## 🧪 Testes Automatizados
+## Testes Automatizados
 
 Execute todos os testes:
 
@@ -133,12 +132,12 @@ pytest -v
 
 Tipos de testes:
 
-* **test_logic.py** → valida parsing e processamento CSV.
+* **test_logic.py** → valida parsing e processamento de CSV.
 * **test_api.py** → valida upload, listagem e download (API REST).
 
 ---
 
-## 🔒 Segurança
+## Segurança
 
 * Upload limitado a **50 MB**.
 * Aceita **apenas arquivos CSV** (`.csv`).
@@ -148,7 +147,7 @@ Tipos de testes:
 
 ---
 
-## ⚙️ CI/CD com GitHub Actions
+## CI/CD com GitHub Actions
 
 Arquivo: `.github/workflows/ci.yml`
 
@@ -160,7 +159,7 @@ Executa automaticamente:
 
 ---
 
-## 🐳 Docker Compose
+## Docker Compose
 
 Arquivo: `docker-compose.yml`
 
@@ -178,7 +177,7 @@ docker-compose up --build
 
 ---
 
-## 🧾 API Endpoints (REST)
+## API Endpoints (REST)
 
 | Método   | Endpoint         | Descrição                             |
 | -------- | ---------------- | ------------------------------------- |
@@ -189,7 +188,7 @@ docker-compose up --build
 
 ---
 
-## 📈 Possíveis Melhorias Futuras
+## Possíveis Melhorias Futuras
 
 * Autenticação (JWT / OAuth2).
 * Dashboard de estatísticas.
@@ -199,7 +198,7 @@ docker-compose up --build
 
 ---
 
-## 👨‍💻 Autor
+## Autor
 
 **Agnaldo Silva Lima**
 🔗 [LinkedIn](https://www.linkedin.com/in/agslima)
