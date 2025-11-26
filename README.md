@@ -1,10 +1,5 @@
-# CSV-Transposer
-
-![Status](https://github.com/agslima/csv_schema_evolution/actions/workflows/ci.yml/badge.svg)
-
-Sistemas de classificação de dados
-
 # CSV Uploader – Full Stack App (Flask + MongoDB)
+![Status](https://github.com/agslima/csv_schema_evolution/actions/workflows/ci.yml/badge.svg)
 
 Aplicação web para **upload, processamento e download de arquivos CSV**, com:
 - UI moderna e responsiva.
