@@ -6,6 +6,10 @@ on:
   pull_request:
     branches: [main]
 
+# Security best practice: restrict GITHUB_TOKEN permissions
+permissions:
+  contents: read
+
 jobs:
   build-test:
     runs-on: ubuntu-latest
