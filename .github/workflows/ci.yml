@@ -53,7 +53,8 @@ jobs:
 
       - name: Run tests
         run: |
-          pytest tests --asyncio-mode=auto
+          export PYTHONPATH=/github/workspace/backend:$PYTHONPATH
+          pytest tests/ -v --asyncio-mode=auto
 
       - name: Build Docker image
         run: |
