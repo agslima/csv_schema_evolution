@@ -1,7 +1,7 @@
 import pytest
 import sys
 import os
-from unittest.mock import AsyncMock, MagicMock, patch, PropertyMock
+from unittest.mock import AsyncMock, MagicMock, patch
 
 # Add backend directory to path so 'app' module can be imported
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'backend'))
@@ -32,12 +32,17 @@ def mock_mongo_db():
     mock_db.files.delete_one = AsyncMock()
     mock_db.files.find = AsyncMock(return_value=[])
     
+    # Setup mock methods for fs_bucket
+    mock_fs_bucket.open_upload_stream = MagicMock()
+    mock_fs_bucket.open_download_stream_by_name = MagicMock()
+    mock_fs_bucket.find = MagicMock(return_value=[])
+    mock_fs_bucket.delete = MagicMock()
+    
     # Patch at module level before importing app
     with patch('app.db.mongo.client', mock_client):
         with patch('app.db.mongo.db', mock_db):
             with patch('app.db.mongo.fs_bucket', mock_fs_bucket):
-                with patch('app.db.mongo.get_fs_bucket', return_value=mock_fs_bucket):
-                    yield
+                yield
 
 
 from fastapi.testclient import TestClient

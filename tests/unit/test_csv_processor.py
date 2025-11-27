@@ -23,43 +23,48 @@ def test_sanitize_value_edge_cases():
 @pytest.mark.asyncio
 async def test_process_csv(tmp_path):
     """Test CSV processing with basic fields and values."""
-    # cria CSV temporário
+    from unittest.mock import MagicMock, AsyncMock, patch
+    
     csv_file = tmp_path / "test.csv"
     csv_file.write_text("field1,value1\nfield2,value2\n")
 
-    # mock file_id e GridFS interaction
-    class MockGridFS:
-        def find(self, *args, **kwargs):
-            class MockOut:
-                def read(self):
-                    return csv_file.read_bytes()
-            return [MockOut()]
-    csv_processor.fs_bucket = MockGridFS()
+    # Create mock for fs_bucket find
+    mock_fs_bucket = MagicMock()
+    mock_out = MagicMock()
+    mock_out.read.return_value = csv_file.read_bytes()
+    mock_fs_bucket.find.return_value = [mock_out]
 
-    # mock db
-    csv_processor.db = type("DB", (), {"files": type("F", (), {"update_one": lambda *a, **k: None})()})()
+    # Mock db.files.update_one
+    mock_db = MagicMock()
+    mock_db.files.update_one = AsyncMock()
 
-    records = await csv_processor.process_csv("mock_id")
-    assert len(records) == 1
-    assert records[0]["field1"] == "value1"
+    with patch('app.db.mongo.fs_bucket', mock_fs_bucket):
+        with patch('app.db.mongo.db', mock_db):
+            records = await csv_processor.process_csv("mock_id")
+            assert len(records) == 1
+            assert records[0]["field1"] == "value1"
 
 @pytest.mark.asyncio
 async def test_process_csv_with_injection(tmp_path):
     """Test CSV processing sanitizes dangerous values."""
+    from unittest.mock import MagicMock, AsyncMock, patch
+    
     csv_file = tmp_path / "injection.csv"
     csv_file.write_text("formula,=MALICIOUS()\nemail,+CMD\nname,@SYSTEM\n")
 
-    class MockGridFS:
-        def find(self, *args, **kwargs):
-            class MockOut:
-                def read(self):
-                    return csv_file.read_bytes()
-            return [MockOut()]
-    csv_processor.fs_bucket = MockGridFS()
+    # Create mock for fs_bucket find
+    mock_fs_bucket = MagicMock()
+    mock_out = MagicMock()
+    mock_out.read.return_value = csv_file.read_bytes()
+    mock_fs_bucket.find.return_value = [mock_out]
 
-    csv_processor.db = type("DB", (), {"files": type("F", (), {"update_one": lambda *a, **k: None})()})()
+    # Mock db.files.update_one
+    mock_db = MagicMock()
+    mock_db.files.update_one = AsyncMock()
 
-    records = await csv_processor.process_csv("mock_id")
-    assert records[0]["formula"] == "'=MALICIOUS()"
-    assert records[1]["email"] == "'+CMD"
-    assert records[2]["name"] == "'@SYSTEM"
+    with patch('app.db.mongo.fs_bucket', mock_fs_bucket):
+        with patch('app.db.mongo.db', mock_db):
+            records = await csv_processor.process_csv("mock_id")
+            assert records[0]["formula"] == "'=MALICIOUS()"
+            assert records[1]["email"] == "'+CMD"
+            assert records[2]["name"] == "'@SYSTEM"
