@@ -34,6 +34,16 @@ Resumo curto: este repositório expõe uma API de upload/processing de CSVs (bac
   - `cd backend && uvicorn app.main:app --reload --host 0.0.0.0 --port 8000` (ambiente Python ativado, MongoDB acessível).
 - CI: referência `.github/workflows/ci.yml` (instala dependências e roda `pytest` + build docker). Alinhe mudanças de dependência com `backend/requirements.txt`.
 
+## Dependências (backend/requirements.txt)
+- **fastapi** (0.104.1): framework web async.
+- **uvicorn[standard]** (0.24.0): ASGI server.
+- **pymongo** (4.6.1): driver MongoDB síncrono.
+- **motor** (3.3.2): driver MongoDB async.
+- **pydantic** (2.5.0): validação de dados.
+- **python-multipart** (0.0.6): suporte para upload de formulários.
+
+Para testes locais, instale também: `pip install pytest pytest-asyncio httpx`
+
 ## Integrações e pontos de atenção
 - GridFS: `backend/app/services/storage.py` usa `fs_bucket.open_upload_stream` / `open_download_stream_by_name` e mantém metadados em `db.files`.
 - Frontend ↔ Backend: `frontend/js/upload.js` e `frontend/js/files_list.js` chamam endpoints sob `/api/v1/files`; adaptar nomes de rota e payloads conforme esses arquivos.
