@@ -1,7 +1,9 @@
 # CSV Uploader – Full Stack App (Flask + MongoDB)
+
 ![Status](https://github.com/agslima/csv_schema_evolution/actions/workflows/ci.yml/badge.svg)
 
 Aplicação web para **upload, processamento e download de arquivos CSV**, com:
+
 - UI moderna e responsiva.
 - Barra de progresso e mensagens visuais.
 - Paginação e busca na lista de arquivos.
