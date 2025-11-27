@@ -84,6 +84,3 @@ async def test_process_csv_with_injection(tmp_path):
             assert records[0]["formula"] == "'=MALICIOUS()"
             assert records[1]["email"] == "'+CMD"
             assert records[2]["name"] == "'@SYSTEM"
-            assert records[0]["formula"] == "'=MALICIOUS()"
-            assert records[1]["email"] == "'+CMD"
-            assert records[2]["name"] == "'@SYSTEM"
