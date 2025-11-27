@@ -72,7 +72,8 @@ from app.main import app
 @pytest.fixture
 def client():
     """Create test client with mocked MongoDB."""
-    return TestClient(app)
+    with TestClient(app) as c:
+        yield c
 
 # Register cleanup
 def pytest_configure(config):

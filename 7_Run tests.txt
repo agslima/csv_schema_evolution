@@ -1,0 +1,838 @@
+﻿2025-11-27T21:27:12.2344129Z ##[debug]Evaluating condition for step: 'Run tests'
+2025-11-27T21:27:12.2345131Z ##[debug]Evaluating: success()
+2025-11-27T21:27:12.2345454Z ##[debug]Evaluating success:
+2025-11-27T21:27:12.2345797Z ##[debug]=> true
+2025-11-27T21:27:12.2346102Z ##[debug]Result: true
+2025-11-27T21:27:12.2346516Z ##[debug]Starting: Run tests
+2025-11-27T21:27:12.2353238Z ##[debug]Loading inputs
+2025-11-27T21:27:12.2353974Z ##[debug]Loading env
+2025-11-27T21:27:12.2357346Z ##[group]Run export PYTHONPATH=/github/workspace/backend:$PYTHONPATH
+2025-11-27T21:27:12.2357776Z [36;1mexport PYTHONPATH=/github/workspace/backend:$PYTHONPATH[0m
+2025-11-27T21:27:12.2358116Z [36;1mpytest tests/ -v --asyncio-mode=auto[0m
+2025-11-27T21:27:12.2387200Z shell: /usr/bin/bash -e {0}
+2025-11-27T21:27:12.2387427Z env:
+2025-11-27T21:27:12.2387617Z   MONGODB_URI: mongodb://127.0.0.1:27017
+2025-11-27T21:27:12.2387948Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.14/x64
+2025-11-27T21:27:12.2388340Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.14/x64/lib/pkgconfig
+2025-11-27T21:27:12.2388987Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.14/x64
+2025-11-27T21:27:12.2389335Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.14/x64
+2025-11-27T21:27:12.2389688Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.14/x64
+2025-11-27T21:27:12.2390033Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.14/x64/lib
+2025-11-27T21:27:12.2390353Z ##[endgroup]
+2025-11-27T21:27:12.2422474Z ##[debug]/usr/bin/bash -e /home/runner/work/_temp/f2da00d5-14b2-4d33-be1b-c15490752d59.sh
+2025-11-27T21:27:13.4412940Z ============================= test session starts ==============================
+2025-11-27T21:27:13.4413681Z platform linux -- Python 3.11.14, pytest-9.0.1, pluggy-1.6.0 -- /opt/hostedtoolcache/Python/3.11.14/x64/bin/python
+2025-11-27T21:27:13.4414240Z cachedir: .pytest_cache
+2025-11-27T21:27:13.4414663Z rootdir: /home/runner/work/csv_schema_evolution/csv_schema_evolution
+2025-11-27T21:27:13.4415082Z configfile: pytest.ini
+2025-11-27T21:27:13.4415361Z plugins: anyio-3.7.1, asyncio-1.3.0
+2025-11-27T21:27:13.4415912Z asyncio: mode=Mode.AUTO, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+2025-11-27T21:27:13.4716409Z collecting ... collected 17 items
+2025-11-27T21:27:13.4716837Z 
+2025-11-27T21:27:13.5316932Z tests/integration/test_api_files.py::test_upload_file ERROR              [  5%]
+2025-11-27T21:27:13.5556565Z tests/integration/test_api_files.py::test_upload_file_with_injection ERROR [ 11%]
+2025-11-27T21:27:13.5793123Z tests/integration/test_api_files.py::test_upload_file_invalid_extension ERROR [ 17%]
+2025-11-27T21:27:13.6031977Z tests/integration/test_api_files.py::test_upload_file_invalid_content_type ERROR [ 23%]
+2025-11-27T21:27:13.6266080Z tests/integration/test_api_files.py::test_list_files ERROR               [ 29%]
+2025-11-27T21:27:13.6667773Z tests/integration/test_api_files.py::test_upload_and_list ERROR          [ 35%]
+2025-11-27T21:27:13.6908137Z tests/integration/test_api_files.py::test_delete_file ERROR              [ 41%]
+2025-11-27T21:27:13.7146642Z tests/integration/test_api_files.py::test_delete_nonexistent_file ERROR  [ 47%]
+2025-11-27T21:27:13.7387557Z tests/integration/test_api_files.py::test_health_check ERROR             [ 52%]
+2025-11-27T21:27:13.7624687Z tests/integration/test_api_files.py::test_upload_with_id_field ERROR     [ 58%]
+2025-11-27T21:27:13.7631996Z tests/unit/test_csv_processor.py::test_sanitize_value PASSED             [ 64%]
+2025-11-27T21:27:13.7638342Z tests/unit/test_csv_processor.py::test_sanitize_value_edge_cases PASSED  [ 70%]
+2025-11-27T21:27:13.7693859Z tests/unit/test_csv_processor.py::test_process_csv FAILED                [ 76%]
+2025-11-27T21:27:13.7735185Z tests/unit/test_csv_processor.py::test_process_csv_with_injection FAILED [ 82%]
+2025-11-27T21:27:13.7742161Z tests/unit/test_sanitize.py::test_sanitize_value PASSED                  [ 88%]
+2025-11-27T21:27:13.7751144Z tests/unit/test_sanitize.py::test_sanitize_value_edge_cases PASSED       [ 94%]
+2025-11-27T21:27:13.7776752Z tests/unit/test_sanitize.py::test_sanitize_does_not_affect_whitespace PASSED [100%]
+2025-11-27T21:27:13.7777406Z 
+2025-11-27T21:27:13.7777615Z ==================================== ERRORS ====================================
+2025-11-27T21:27:13.7778402Z ______________________ ERROR at setup of test_upload_file ______________________
+2025-11-27T21:27:13.7779084Z 
+2025-11-27T21:27:13.7779283Z self = <Coroutine test_upload_file>
+2025-11-27T21:27:13.7779513Z 
+2025-11-27T21:27:13.7779625Z     def setup(self) -> None:
+2025-11-27T21:27:13.7779969Z         runner_fixture_id = f"_{self._loop_scope}_scoped_runner"
+2025-11-27T21:27:13.7780374Z         if runner_fixture_id not in self.fixturenames:
+2025-11-27T21:27:13.7780821Z             self.fixturenames.append(runner_fixture_id)
+2025-11-27T21:27:13.7781159Z >       return super().setup()
+2025-11-27T21:27:13.7781435Z                ^^^^^^^^^^^^^^^
+2025-11-27T21:27:13.7781603Z 
+2025-11-27T21:27:13.7782004Z /opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/pytest_asyncio/plugin.py:458: 
+2025-11-27T21:27:13.7782624Z _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+2025-11-27T21:27:13.7783245Z /opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/pytest_asyncio/plugin.py:730: in pytest_fixture_setup
+2025-11-27T21:27:13.7783823Z     return (yield)
+2025-11-27T21:27:13.7784015Z             ^^^^^
+2025-11-27T21:27:13.7784212Z tests/conftest.py:50: in client
+2025-11-27T21:27:13.7784460Z     with TestClient(app) as c:
+2025-11-27T21:27:13.7784827Z          ^^^^^^^^^^^^^^^
+2025-11-27T21:27:13.7785235Z _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+2025-11-27T21:27:13.7785545Z 
+2025-11-27T21:27:13.7785813Z self = <starlette.testclient.TestClient object at 0x7f1d27de49d0>
+2025-11-27T21:27:13.7786529Z app = <fastapi.applications.FastAPI object at 0x7f1d2abb70d0>
+2025-11-27T21:27:13.7787104Z base_url = 'http://testserver', raise_server_exceptions = True, root_path = ''
+2025-11-27T21:27:13.7787734Z backend = 'asyncio', backend_options = None, cookies = None
+2025-11-27T21:27:13.7788259Z headers = {'user-agent': 'testclient'}
+2025-11-27T21:27:13.7788749Z 
+2025-11-27T21:27:13.7788861Z     def __init__(
+2025-11-27T21:27:13.7789145Z         self,
+2025-11-27T21:27:13.7789420Z         app: ASGIApp,
+2025-11-27T21:27:13.7789773Z         base_url: str = "http://testserver",
+2025-11-27T21:27:13.7790213Z         raise_server_exceptions: bool = True,
+2025-11-27T21:27:13.7790636Z         root_path: str = "",
+2025-11-27T21:27:13.7790995Z         backend: str = "asyncio",
+2025-11-27T21:27:13.7791548Z         backend_options: typing.Optional[typing.Dict[str, typing.Any]] = None,
+2025-11-27T21:27:13.7792014Z         cookies: httpx._client.CookieTypes = None,
+2025-11-27T21:27:13.7792382Z         headers: typing.Dict[str, str] = None,
+2025-11-27T21:27:13.7793050Z     ) -> None:
+2025-11-27T21:27:13.7793359Z         self.async_backend = _AsyncBackend(
+2025-11-27T21:27:13.7793776Z             backend=backend, backend_options=backend_options or {}
+2025-11-27T21:27:13.7794060Z         )
+2025-11-27T21:27:13.7794221Z         if _is_asgi3(app):
+2025-11-27T21:27:13.7794448Z             app = typing.cast(ASGI3App, app)
+2025-11-27T21:27:13.7794688Z             asgi_app = app
+2025-11-27T21:27:13.7794879Z         else:
+2025-11-27T21:27:13.7795111Z             app = typing.cast(ASGI2App, app)  # type: ignore[assignment]
+2025-11-27T21:27:13.7795457Z             asgi_app = _WrapASGI2(app)  # type: ignore[arg-type]
+2025-11-27T21:27:13.7795738Z         self.app = asgi_app
+2025-11-27T21:27:13.7795994Z         self.app_state: typing.Dict[str, typing.Any] = {}
+2025-11-27T21:27:13.7796287Z         transport = _TestClientTransport(
+2025-11-27T21:27:13.7796519Z             self.app,
+2025-11-27T21:27:13.7796884Z             portal_factory=self._portal_factory,
+2025-11-27T21:27:13.7797361Z             raise_server_exceptions=raise_server_exceptions,
+2025-11-27T21:27:13.7797646Z             root_path=root_path,
+2025-11-27T21:27:13.7798018Z             app_state=self.app_state,
+2025-11-27T21:27:13.7798237Z         )
+2025-11-27T21:27:13.7798398Z         if headers is None:
+2025-11-27T21:27:13.7798906Z             headers = {}
+2025-11-27T21:27:13.7817653Z         headers.setdefault("user-agent", "testclient")
+2025-11-27T21:27:13.7818137Z >       super().__init__(
+2025-11-27T21:27:13.7818723Z             app=self.app,
+2025-11-27T21:27:13.7819046Z             base_url=base_url,
+2025-11-27T21:27:13.7819397Z             headers=headers,
+2025-11-27T21:27:13.7819756Z             transport=transport,
+2025-11-27T21:27:13.7820145Z             follow_redirects=True,
+2025-11-27T21:27:13.7820544Z             cookies=cookies,
+2025-11-27T21:27:13.7820876Z         )
+2025-11-27T21:27:13.7821321Z E       TypeError: Client.__init__() got an unexpected keyword argument 'app'
+2025-11-27T21:27:13.7821797Z 
+2025-11-27T21:27:13.7822343Z /opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/starlette/testclient.py:399: TypeError
+2025-11-27T21:27:13.7823365Z ______________ ERROR at setup of test_upload_file_with_injection _______________
+2025-11-27T21:27:13.7823835Z 
+2025-11-27T21:27:13.7824053Z self = <Coroutine test_upload_file_with_injection>
+2025-11-27T21:27:13.7824400Z 
+2025-11-27T21:27:13.7824549Z     def setup(self) -> None:
+2025-11-27T21:27:13.7825042Z         runner_fixture_id = f"_{self._loop_scope}_scoped_runner"
+2025-11-27T21:27:13.7825640Z         if runner_fixture_id not in self.fixturenames:
+2025-11-27T21:27:13.7826198Z             self.fixturenames.append(runner_fixture_id)
+2025-11-27T21:27:13.7826695Z >       return super().setup()
+2025-11-27T21:27:13.7827054Z                ^^^^^^^^^^^^^^^
+2025-11-27T21:27:13.7827289Z 
+2025-11-27T21:27:13.7827811Z /opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/pytest_asyncio/plugin.py:458: 
+2025-11-27T21:27:13.7828896Z _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+2025-11-27T21:27:13.7829900Z /opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/pytest_asyncio/plugin.py:730: in pytest_fixture_setup
+2025-11-27T21:27:13.7830834Z     return (yield)
+2025-11-27T21:27:13.7831149Z             ^^^^^
+2025-11-27T21:27:13.7831484Z tests/conftest.py:50: in client
+2025-11-27T21:27:13.7831857Z     with TestClient(app) as c:
+2025-11-27T21:27:13.7832234Z          ^^^^^^^^^^^^^^^
+2025-11-27T21:27:13.7832636Z _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+2025-11-27T21:27:13.7832999Z 
+2025-11-27T21:27:13.7833295Z self = <starlette.testclient.TestClient object at 0x7f1d27d9ce50>
+2025-11-27T21:27:13.7833975Z app = <fastapi.applications.FastAPI object at 0x7f1d2abb70d0>
+2025-11-27T21:27:13.7834738Z base_url = 'http://testserver', raise_server_exceptions = True, root_path = ''
+2025-11-27T21:27:13.7835478Z backend = 'asyncio', backend_options = None, cookies = None
+2025-11-27T21:27:13.7836314Z headers = {'user-agent': 'testclient'}
+2025-11-27T21:27:13.7836613Z 
+2025-11-27T21:27:13.7836736Z     def __init__(
+2025-11-27T21:27:13.7837033Z         self,
+2025-11-27T21:27:13.7837333Z         app: ASGIApp,
+2025-11-27T21:27:13.7837691Z         base_url: str = "http://testserver",
+2025-11-27T21:27:13.7838163Z         raise_server_exceptions: bool = True,
+2025-11-27T21:27:13.7838797Z         root_path: str = "",
+2025-11-27T21:27:13.7839176Z         backend: str = "asyncio",
+2025-11-27T21:27:13.7839751Z         backend_options: typing.Optional[typing.Dict[str, typing.Any]] = None,
+2025-11-27T21:27:13.7840396Z         cookies: httpx._client.CookieTypes = None,
+2025-11-27T21:27:13.7840898Z         headers: typing.Dict[str, str] = None,
+2025-11-27T21:27:13.7841313Z     ) -> None:
+2025-11-27T21:27:13.7841637Z         self.async_backend = _AsyncBackend(
+2025-11-27T21:27:13.7842185Z             backend=backend, backend_options=backend_options or {}
+2025-11-27T21:27:13.7842701Z         )
+2025-11-27T21:27:13.7843013Z         if _is_asgi3(app):
+2025-11-27T21:27:13.7843422Z             app = typing.cast(ASGI3App, app)
+2025-11-27T21:27:13.7844143Z             asgi_app = app
+2025-11-27T21:27:13.7844492Z         else:
+2025-11-27T21:27:13.7844938Z             app = typing.cast(ASGI2App, app)  # type: ignore[assignment]
+2025-11-27T21:27:13.7845583Z             asgi_app = _WrapASGI2(app)  # type: ignore[arg-type]
+2025-11-27T21:27:13.7846094Z         self.app = asgi_app
+2025-11-27T21:27:13.7846527Z         self.app_state: typing.Dict[str, typing.Any] = {}
+2025-11-27T21:27:13.7847054Z         transport = _TestClientTransport(
+2025-11-27T21:27:13.7847461Z             self.app,
+2025-11-27T21:27:13.7847834Z             portal_factory=self._portal_factory,
+2025-11-27T21:27:13.7848347Z             raise_server_exceptions=raise_server_exceptions,
+2025-11-27T21:27:13.7849039Z             root_path=root_path,
+2025-11-27T21:27:13.7849440Z             app_state=self.app_state,
+2025-11-27T21:27:13.7849834Z         )
+2025-11-27T21:27:13.7850131Z         if headers is None:
+2025-11-27T21:27:13.7850483Z             headers = {}
+2025-11-27T21:27:13.7850902Z         headers.setdefault("user-agent", "testclient")
+2025-11-27T21:27:13.7851387Z >       super().__init__(
+2025-11-27T21:27:13.7851737Z             app=self.app,
+2025-11-27T21:27:13.7852109Z             base_url=base_url,
+2025-11-27T21:27:13.7852489Z             headers=headers,
+2025-11-27T21:27:13.7852871Z             transport=transport,
+2025-11-27T21:27:13.7853283Z             follow_redirects=True,
+2025-11-27T21:27:13.7853679Z             cookies=cookies,
+2025-11-27T21:27:13.7854016Z         )
+2025-11-27T21:27:13.7854442Z E       TypeError: Client.__init__() got an unexpected keyword argument 'app'
+2025-11-27T21:27:13.7854898Z 
+2025-11-27T21:27:13.7855442Z /opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/starlette/testclient.py:399: TypeError
+2025-11-27T21:27:13.7856438Z _____________ ERROR at setup of test_upload_file_invalid_extension _____________
+2025-11-27T21:27:13.7856893Z 
+2025-11-27T21:27:13.7857119Z self = <Coroutine test_upload_file_invalid_extension>
+2025-11-27T21:27:13.7857503Z 
+2025-11-27T21:27:13.7857663Z     def setup(self) -> None:
+2025-11-27T21:27:13.7858160Z         runner_fixture_id = f"_{self._loop_scope}_scoped_runner"
+2025-11-27T21:27:13.7858960Z         if runner_fixture_id not in self.fixturenames:
+2025-11-27T21:27:13.7859511Z             self.fixturenames.append(runner_fixture_id)
+2025-11-27T21:27:13.7860006Z >       return super().setup()
+2025-11-27T21:27:13.7860371Z                ^^^^^^^^^^^^^^^
+2025-11-27T21:27:13.7860603Z 
+2025-11-27T21:27:13.7861126Z /opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/pytest_asyncio/plugin.py:458: 
+2025-11-27T21:27:13.7861989Z _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+2025-11-27T21:27:13.7862984Z /opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/pytest_asyncio/plugin.py:730: in pytest_fixture_setup
+2025-11-27T21:27:13.7863920Z     return (yield)
+2025-11-27T21:27:13.7864104Z             ^^^^^
+2025-11-27T21:27:13.7864302Z tests/conftest.py:50: in client
+2025-11-27T21:27:13.7864549Z     with TestClient(app) as c:
+2025-11-27T21:27:13.7864759Z          ^^^^^^^^^^^^^^^
+2025-11-27T21:27:13.7864987Z _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+2025-11-27T21:27:13.7865192Z 
+2025-11-27T21:27:13.7865360Z self = <starlette.testclient.TestClient object at 0x7f1d27d9ded0>
+2025-11-27T21:27:13.7865748Z app = <fastapi.applications.FastAPI object at 0x7f1d2abb70d0>
+2025-11-27T21:27:13.7866166Z base_url = 'http://testserver', raise_server_exceptions = True, root_path = ''
+2025-11-27T21:27:13.7866565Z backend = 'asyncio', backend_options = None, cookies = None
+2025-11-27T21:27:13.7866863Z headers = {'user-agent': 'testclient'}
+2025-11-27T21:27:13.7867026Z 
+2025-11-27T21:27:13.7867099Z     def __init__(
+2025-11-27T21:27:13.7867265Z         self,
+2025-11-27T21:27:13.7867437Z         app: ASGIApp,
+2025-11-27T21:27:13.7867650Z         base_url: str = "http://testserver",
+2025-11-27T21:27:13.7867911Z         raise_server_exceptions: bool = True,
+2025-11-27T21:27:13.7868287Z         root_path: str = "",
+2025-11-27T21:27:13.7868766Z         backend: str = "asyncio",
+2025-11-27T21:27:13.7869103Z         backend_options: typing.Optional[typing.Dict[str, typing.Any]] = None,
+2025-11-27T21:27:13.7869464Z         cookies: httpx._client.CookieTypes = None,
+2025-11-27T21:27:13.7869739Z         headers: typing.Dict[str, str] = None,
+2025-11-27T21:27:13.7869968Z     ) -> None:
+2025-11-27T21:27:13.7870155Z         self.async_backend = _AsyncBackend(
+2025-11-27T21:27:13.7870444Z             backend=backend, backend_options=backend_options or {}
+2025-11-27T21:27:13.7870715Z         )
+2025-11-27T21:27:13.7870874Z         if _is_asgi3(app):
+2025-11-27T21:27:13.7871097Z             app = typing.cast(ASGI3App, app)
+2025-11-27T21:27:13.7871333Z             asgi_app = app
+2025-11-27T21:27:13.7871511Z         else:
+2025-11-27T21:27:13.7871762Z             app = typing.cast(ASGI2App, app)  # type: ignore[assignment]
+2025-11-27T21:27:13.7872099Z             asgi_app = _WrapASGI2(app)  # type: ignore[arg-type]
+2025-11-27T21:27:13.7872375Z         self.app = asgi_app
+2025-11-27T21:27:13.7872614Z         self.app_state: typing.Dict[str, typing.Any] = {}
+2025-11-27T21:27:13.7872901Z         transport = _TestClientTransport(
+2025-11-27T21:27:13.7873127Z             self.app,
+2025-11-27T21:27:13.7873331Z             portal_factory=self._portal_factory,
+2025-11-27T21:27:13.7873619Z             raise_server_exceptions=raise_server_exceptions,
+2025-11-27T21:27:13.7873890Z             root_path=root_path,
+2025-11-27T21:27:13.7874114Z             app_state=self.app_state,
+2025-11-27T21:27:13.7874324Z         )
+2025-11-27T21:27:13.7874484Z         if headers is None:
+2025-11-27T21:27:13.7874675Z             headers = {}
+2025-11-27T21:27:13.7875009Z         headers.setdefault("user-agent", "testclient")
+2025-11-27T21:27:13.7875275Z >       super().__init__(
+2025-11-27T21:27:13.7875468Z             app=self.app,
+2025-11-27T21:27:13.7875662Z             base_url=base_url,
+2025-11-27T21:27:13.7875867Z             headers=headers,
+2025-11-27T21:27:13.7876077Z             transport=transport,
+2025-11-27T21:27:13.7876290Z             follow_redirects=True,
+2025-11-27T21:27:13.7876512Z             cookies=cookies,
+2025-11-27T21:27:13.7876691Z         )
+2025-11-27T21:27:13.7876951Z E       TypeError: Client.__init__() got an unexpected keyword argument 'app'
+2025-11-27T21:27:13.7877211Z 
+2025-11-27T21:27:13.7877529Z /opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/starlette/testclient.py:399: TypeError
+2025-11-27T21:27:13.7878070Z ___________ ERROR at setup of test_upload_file_invalid_content_type ____________
+2025-11-27T21:27:13.7878323Z 
+2025-11-27T21:27:13.7878681Z self = <Coroutine test_upload_file_invalid_content_type>
+2025-11-27T21:27:13.7878895Z 
+2025-11-27T21:27:13.7878975Z     def setup(self) -> None:
+2025-11-27T21:27:13.7879387Z         runner_fixture_id = f"_{self._loop_scope}_scoped_runner"
+2025-11-27T21:27:13.7879718Z         if runner_fixture_id not in self.fixturenames:
+2025-11-27T21:27:13.7880050Z             self.fixturenames.append(runner_fixture_id)
+2025-11-27T21:27:13.7880318Z >       return super().setup()
+2025-11-27T21:27:13.7880512Z                ^^^^^^^^^^^^^^^
+2025-11-27T21:27:13.7880632Z 
+2025-11-27T21:27:13.7880917Z /opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/pytest_asyncio/plugin.py:458: 
+2025-11-27T21:27:13.7881380Z _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+2025-11-27T21:27:13.7881917Z /opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/pytest_asyncio/plugin.py:730: in pytest_fixture_setup
+2025-11-27T21:27:13.7882419Z     return (yield)
+2025-11-27T21:27:13.7882582Z             ^^^^^
+2025-11-27T21:27:13.7882765Z tests/conftest.py:50: in client
+2025-11-27T21:27:13.7882976Z     with TestClient(app) as c:
+2025-11-27T21:27:13.7883182Z          ^^^^^^^^^^^^^^^
+2025-11-27T21:27:13.7883393Z _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+2025-11-27T21:27:13.7883706Z 
+2025-11-27T21:27:13.7883864Z self = <starlette.testclient.TestClient object at 0x7f1d27d994d0>
+2025-11-27T21:27:13.7884240Z app = <fastapi.applications.FastAPI object at 0x7f1d2abb70d0>
+2025-11-27T21:27:13.7884652Z base_url = 'http://testserver', raise_server_exceptions = True, root_path = ''
+2025-11-27T21:27:13.7885047Z backend = 'asyncio', backend_options = None, cookies = None
+2025-11-27T21:27:13.7885340Z headers = {'user-agent': 'testclient'}
+2025-11-27T21:27:13.7885508Z 
+2025-11-27T21:27:13.7885571Z     def __init__(
+2025-11-27T21:27:13.7885732Z         self,
+2025-11-27T21:27:13.7885899Z         app: ASGIApp,
+2025-11-27T21:27:13.7886101Z         base_url: str = "http://testserver",
+2025-11-27T21:27:13.7886356Z         raise_server_exceptions: bool = True,
+2025-11-27T21:27:13.7886596Z         root_path: str = "",
+2025-11-27T21:27:13.7886808Z         backend: str = "asyncio",
+2025-11-27T21:27:13.7887128Z         backend_options: typing.Optional[typing.Dict[str, typing.Any]] = None,
+2025-11-27T21:27:13.7887489Z         cookies: httpx._client.CookieTypes = None,
+2025-11-27T21:27:13.7887759Z         headers: typing.Dict[str, str] = None,
+2025-11-27T21:27:13.7887981Z     ) -> None:
+2025-11-27T21:27:13.7888168Z         self.async_backend = _AsyncBackend(
+2025-11-27T21:27:13.7888635Z             backend=backend, backend_options=backend_options or {}
+2025-11-27T21:27:13.7888922Z         )
+2025-11-27T21:27:13.7889083Z         if _is_asgi3(app):
+2025-11-27T21:27:13.7889297Z             app = typing.cast(ASGI3App, app)
+2025-11-27T21:27:13.7889538Z             asgi_app = app
+2025-11-27T21:27:13.7889719Z         else:
+2025-11-27T21:27:13.7889954Z             app = typing.cast(ASGI2App, app)  # type: ignore[assignment]
+2025-11-27T21:27:13.7890306Z             asgi_app = _WrapASGI2(app)  # type: ignore[arg-type]
+2025-11-27T21:27:13.7890583Z         self.app = asgi_app
+2025-11-27T21:27:13.7890827Z         self.app_state: typing.Dict[str, typing.Any] = {}
+2025-11-27T21:27:13.7891117Z         transport = _TestClientTransport(
+2025-11-27T21:27:13.7891356Z             self.app,
+2025-11-27T21:27:13.7891555Z             portal_factory=self._portal_factory,
+2025-11-27T21:27:13.7891842Z             raise_server_exceptions=raise_server_exceptions,
+2025-11-27T21:27:13.7892111Z             root_path=root_path,
+2025-11-27T21:27:13.7892346Z             app_state=self.app_state,
+2025-11-27T21:27:13.7892554Z         )
+2025-11-27T21:27:13.7892715Z         if headers is None:
+2025-11-27T21:27:13.7892906Z             headers = {}
+2025-11-27T21:27:13.7893134Z         headers.setdefault("user-agent", "testclient")
+2025-11-27T21:27:13.7893393Z >       super().__init__(
+2025-11-27T21:27:13.7893578Z             app=self.app,
+2025-11-27T21:27:13.7893767Z             base_url=base_url,
+2025-11-27T21:27:13.7893965Z             headers=headers,
+2025-11-27T21:27:13.7894167Z             transport=transport,
+2025-11-27T21:27:13.7894521Z             follow_redirects=True,
+2025-11-27T21:27:13.7894734Z             cookies=cookies,
+2025-11-27T21:27:13.7894923Z         )
+2025-11-27T21:27:13.7895180Z E       TypeError: Client.__init__() got an unexpected keyword argument 'app'
+2025-11-27T21:27:13.7895431Z 
+2025-11-27T21:27:13.7895741Z /opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/starlette/testclient.py:399: TypeError
+2025-11-27T21:27:13.7896270Z ______________________ ERROR at setup of test_list_files _______________________
+2025-11-27T21:27:13.7896500Z 
+2025-11-27T21:27:13.7896586Z self = <Coroutine test_list_files>
+2025-11-27T21:27:13.7896733Z 
+2025-11-27T21:27:13.7896812Z     def setup(self) -> None:
+2025-11-27T21:27:13.7897071Z         runner_fixture_id = f"_{self._loop_scope}_scoped_runner"
+2025-11-27T21:27:13.7897383Z         if runner_fixture_id not in self.fixturenames:
+2025-11-27T21:27:13.7897682Z             self.fixturenames.append(runner_fixture_id)
+2025-11-27T21:27:13.7897954Z >       return super().setup()
+2025-11-27T21:27:13.7898146Z                ^^^^^^^^^^^^^^^
+2025-11-27T21:27:13.7898268Z 
+2025-11-27T21:27:13.7898893Z /opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/pytest_asyncio/plugin.py:458: 
+2025-11-27T21:27:13.7899360Z _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+2025-11-27T21:27:13.7899895Z /opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/pytest_asyncio/plugin.py:730: in pytest_fixture_setup
+2025-11-27T21:27:13.7900392Z     return (yield)
+2025-11-27T21:27:13.7900555Z             ^^^^^
+2025-11-27T21:27:13.7900738Z tests/conftest.py:50: in client
+2025-11-27T21:27:13.7900959Z     with TestClient(app) as c:
+2025-11-27T21:27:13.7901161Z          ^^^^^^^^^^^^^^^
+2025-11-27T21:27:13.7901370Z _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+2025-11-27T21:27:13.7901569Z 
+2025-11-27T21:27:13.7901726Z self = <starlette.testclient.TestClient object at 0x7f1d27d9a810>
+2025-11-27T21:27:13.7902110Z app = <fastapi.applications.FastAPI object at 0x7f1d2abb70d0>
+2025-11-27T21:27:13.7902531Z base_url = 'http://testserver', raise_server_exceptions = True, root_path = ''
+2025-11-27T21:27:13.7902933Z backend = 'asyncio', backend_options = None, cookies = None
+2025-11-27T21:27:13.7903230Z headers = {'user-agent': 'testclient'}
+2025-11-27T21:27:13.7903395Z 
+2025-11-27T21:27:13.7903459Z     def __init__(
+2025-11-27T21:27:13.7903621Z         self,
+2025-11-27T21:27:13.7903785Z         app: ASGIApp,
+2025-11-27T21:27:13.7903986Z         base_url: str = "http://testserver",
+2025-11-27T21:27:13.7904240Z         raise_server_exceptions: bool = True,
+2025-11-27T21:27:13.7904478Z         root_path: str = "",
+2025-11-27T21:27:13.7904680Z         backend: str = "asyncio",
+2025-11-27T21:27:13.7904996Z         backend_options: typing.Optional[typing.Dict[str, typing.Any]] = None,
+2025-11-27T21:27:13.7905358Z         cookies: httpx._client.CookieTypes = None,
+2025-11-27T21:27:13.7905636Z         headers: typing.Dict[str, str] = None,
+2025-11-27T21:27:13.7905864Z     ) -> None:
+2025-11-27T21:27:13.7906053Z         self.async_backend = _AsyncBackend(
+2025-11-27T21:27:13.7906343Z             backend=backend, backend_options=backend_options or {}
+2025-11-27T21:27:13.7906617Z         )
+2025-11-27T21:27:13.7906782Z         if _is_asgi3(app):
+2025-11-27T21:27:13.7906990Z             app = typing.cast(ASGI3App, app)
+2025-11-27T21:27:13.7907228Z             asgi_app = app
+2025-11-27T21:27:13.7907404Z         else:
+2025-11-27T21:27:13.7907632Z             app = typing.cast(ASGI2App, app)  # type: ignore[assignment]
+2025-11-27T21:27:13.7907965Z             asgi_app = _WrapASGI2(app)  # type: ignore[arg-type]
+2025-11-27T21:27:13.7908236Z         self.app = asgi_app
+2025-11-27T21:27:13.7908666Z         self.app_state: typing.Dict[str, typing.Any] = {}
+2025-11-27T21:27:13.7908978Z         transport = _TestClientTransport(
+2025-11-27T21:27:13.7909213Z             self.app,
+2025-11-27T21:27:13.7909411Z             portal_factory=self._portal_factory,
+2025-11-27T21:27:13.7909833Z             raise_server_exceptions=raise_server_exceptions,
+2025-11-27T21:27:13.7910099Z             root_path=root_path,
+2025-11-27T21:27:13.7910326Z             app_state=self.app_state,
+2025-11-27T21:27:13.7910536Z         )
+2025-11-27T21:27:13.7910697Z         if headers is None:
+2025-11-27T21:27:13.7910887Z             headers = {}
+2025-11-27T21:27:13.7911120Z         headers.setdefault("user-agent", "testclient")
+2025-11-27T21:27:13.7911388Z >       super().__init__(
+2025-11-27T21:27:13.7911571Z             app=self.app,
+2025-11-27T21:27:13.7911765Z             base_url=base_url,
+2025-11-27T21:27:13.7911962Z             headers=headers,
+2025-11-27T21:27:13.7912167Z             transport=transport,
+2025-11-27T21:27:13.7912380Z             follow_redirects=True,
+2025-11-27T21:27:13.7912591Z             cookies=cookies,
+2025-11-27T21:27:13.7912777Z         )
+2025-11-27T21:27:13.7913028Z E       TypeError: Client.__init__() got an unexpected keyword argument 'app'
+2025-11-27T21:27:13.7913293Z 
+2025-11-27T21:27:13.7913598Z /opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/starlette/testclient.py:399: TypeError
+2025-11-27T21:27:13.7914247Z ____________________ ERROR at setup of test_upload_and_list ____________________
+2025-11-27T21:27:13.7914494Z 
+2025-11-27T21:27:13.7914581Z self = <Coroutine test_upload_and_list>
+2025-11-27T21:27:13.7914746Z 
+2025-11-27T21:27:13.7914829Z     def setup(self) -> None:
+2025-11-27T21:27:13.7915082Z         runner_fixture_id = f"_{self._loop_scope}_scoped_runner"
+2025-11-27T21:27:13.7915404Z         if runner_fixture_id not in self.fixturenames:
+2025-11-27T21:27:13.7915694Z             self.fixturenames.append(runner_fixture_id)
+2025-11-27T21:27:13.7915971Z >       return super().setup()
+2025-11-27T21:27:13.7916177Z                ^^^^^^^^^^^^^^^
+2025-11-27T21:27:13.7916307Z 
+2025-11-27T21:27:13.7916594Z /opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/pytest_asyncio/plugin.py:458: 
+2025-11-27T21:27:13.7917071Z _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+2025-11-27T21:27:13.7917623Z /opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/pytest_asyncio/plugin.py:730: in pytest_fixture_setup
+2025-11-27T21:27:13.7918135Z     return (yield)
+2025-11-27T21:27:13.7918299Z             ^^^^^
+2025-11-27T21:27:13.7918638Z tests/conftest.py:50: in client
+2025-11-27T21:27:13.7918904Z     with TestClient(app) as c:
+2025-11-27T21:27:13.7919112Z          ^^^^^^^^^^^^^^^
+2025-11-27T21:27:13.7919341Z _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+2025-11-27T21:27:13.7919530Z 
+2025-11-27T21:27:13.7919691Z self = <starlette.testclient.TestClient object at 0x7f1d27d419d0>
+2025-11-27T21:27:13.7920077Z app = <fastapi.applications.FastAPI object at 0x7f1d2abb70d0>
+2025-11-27T21:27:13.7920485Z base_url = 'http://testserver', raise_server_exceptions = True, root_path = ''
+2025-11-27T21:27:13.7920882Z backend = 'asyncio', backend_options = None, cookies = None
+2025-11-27T21:27:13.7921189Z headers = {'user-agent': 'testclient'}
+2025-11-27T21:27:13.7921352Z 
+2025-11-27T21:27:13.7921423Z     def __init__(
+2025-11-27T21:27:13.7921588Z         self,
+2025-11-27T21:27:13.7921747Z         app: ASGIApp,
+2025-11-27T21:27:13.7921950Z         base_url: str = "http://testserver",
+2025-11-27T21:27:13.7922209Z         raise_server_exceptions: bool = True,
+2025-11-27T21:27:13.7922450Z         root_path: str = "",
+2025-11-27T21:27:13.7922653Z         backend: str = "asyncio",
+2025-11-27T21:27:13.7922971Z         backend_options: typing.Optional[typing.Dict[str, typing.Any]] = None,
+2025-11-27T21:27:13.7923337Z         cookies: httpx._client.CookieTypes = None,
+2025-11-27T21:27:13.7923602Z         headers: typing.Dict[str, str] = None,
+2025-11-27T21:27:13.7923833Z     ) -> None:
+2025-11-27T21:27:13.7924013Z         self.async_backend = _AsyncBackend(
+2025-11-27T21:27:13.7924310Z             backend=backend, backend_options=backend_options or {}
+2025-11-27T21:27:13.7924745Z         )
+2025-11-27T21:27:13.7924905Z         if _is_asgi3(app):
+2025-11-27T21:27:13.7925115Z             app = typing.cast(ASGI3App, app)
+2025-11-27T21:27:13.7925358Z             asgi_app = app
+2025-11-27T21:27:13.7925542Z         else:
+2025-11-27T21:27:13.7925765Z             app = typing.cast(ASGI2App, app)  # type: ignore[assignment]
+2025-11-27T21:27:13.7926105Z             asgi_app = _WrapASGI2(app)  # type: ignore[arg-type]
+2025-11-27T21:27:13.7926373Z         self.app = asgi_app
+2025-11-27T21:27:13.7926618Z         self.app_state: typing.Dict[str, typing.Any] = {}
+2025-11-27T21:27:13.7926897Z         transport = _TestClientTransport(
+2025-11-27T21:27:13.7927132Z             self.app,
+2025-11-27T21:27:13.7927327Z             portal_factory=self._portal_factory,
+2025-11-27T21:27:13.7927615Z             raise_server_exceptions=raise_server_exceptions,
+2025-11-27T21:27:13.7927890Z             root_path=root_path,
+2025-11-27T21:27:13.7928102Z             app_state=self.app_state,
+2025-11-27T21:27:13.7928326Z         )
+2025-11-27T21:27:13.7928689Z         if headers is None:
+2025-11-27T21:27:13.7928904Z             headers = {}
+2025-11-27T21:27:13.7929257Z         headers.setdefault("user-agent", "testclient")
+2025-11-27T21:27:13.7929519Z >       super().__init__(
+2025-11-27T21:27:13.7929706Z             app=self.app,
+2025-11-27T21:27:13.7929922Z             base_url=base_url,
+2025-11-27T21:27:13.7930129Z             headers=headers,
+2025-11-27T21:27:13.7930328Z             transport=transport,
+2025-11-27T21:27:13.7930545Z             follow_redirects=True,
+2025-11-27T21:27:13.7930759Z             cookies=cookies,
+2025-11-27T21:27:13.7930946Z         )
+2025-11-27T21:27:13.7931199Z E       TypeError: Client.__init__() got an unexpected keyword argument 'app'
+2025-11-27T21:27:13.7931458Z 
+2025-11-27T21:27:13.7931762Z /opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/starlette/testclient.py:399: TypeError
+2025-11-27T21:27:13.7932302Z ______________________ ERROR at setup of test_delete_file ______________________
+2025-11-27T21:27:13.7932545Z 
+2025-11-27T21:27:13.7932627Z self = <Coroutine test_delete_file>
+2025-11-27T21:27:13.7932787Z 
+2025-11-27T21:27:13.7932871Z     def setup(self) -> None:
+2025-11-27T21:27:13.7933129Z         runner_fixture_id = f"_{self._loop_scope}_scoped_runner"
+2025-11-27T21:27:13.7933451Z         if runner_fixture_id not in self.fixturenames:
+2025-11-27T21:27:13.7933741Z             self.fixturenames.append(runner_fixture_id)
+2025-11-27T21:27:13.7934000Z >       return super().setup()
+2025-11-27T21:27:13.7934202Z                ^^^^^^^^^^^^^^^
+2025-11-27T21:27:13.7934324Z 
+2025-11-27T21:27:13.7934596Z /opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/pytest_asyncio/plugin.py:458: 
+2025-11-27T21:27:13.7935057Z _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+2025-11-27T21:27:13.7935581Z /opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/pytest_asyncio/plugin.py:730: in pytest_fixture_setup
+2025-11-27T21:27:13.7936084Z     return (yield)
+2025-11-27T21:27:13.7936248Z             ^^^^^
+2025-11-27T21:27:13.7936430Z tests/conftest.py:50: in client
+2025-11-27T21:27:13.7936651Z     with TestClient(app) as c:
+2025-11-27T21:27:13.7936846Z          ^^^^^^^^^^^^^^^
+2025-11-27T21:27:13.7937060Z _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+2025-11-27T21:27:13.7937251Z 
+2025-11-27T21:27:13.7937407Z self = <starlette.testclient.TestClient object at 0x7f1d27cf9150>
+2025-11-27T21:27:13.7937790Z app = <fastapi.applications.FastAPI object at 0x7f1d2abb70d0>
+2025-11-27T21:27:13.7938193Z base_url = 'http://testserver', raise_server_exceptions = True, root_path = ''
+2025-11-27T21:27:13.7938693Z backend = 'asyncio', backend_options = None, cookies = None
+2025-11-27T21:27:13.7938994Z headers = {'user-agent': 'testclient'}
+2025-11-27T21:27:13.7939154Z 
+2025-11-27T21:27:13.7939217Z     def __init__(
+2025-11-27T21:27:13.7939384Z         self,
+2025-11-27T21:27:13.7939541Z         app: ASGIApp,
+2025-11-27T21:27:13.7939864Z         base_url: str = "http://testserver",
+2025-11-27T21:27:13.7940116Z         raise_server_exceptions: bool = True,
+2025-11-27T21:27:13.7940360Z         root_path: str = "",
+2025-11-27T21:27:13.7940562Z         backend: str = "asyncio",
+2025-11-27T21:27:13.7940882Z         backend_options: typing.Optional[typing.Dict[str, typing.Any]] = None,
+2025-11-27T21:27:13.7941242Z         cookies: httpx._client.CookieTypes = None,
+2025-11-27T21:27:13.7941509Z         headers: typing.Dict[str, str] = None,
+2025-11-27T21:27:13.7941743Z     ) -> None:
+2025-11-27T21:27:13.7941924Z         self.async_backend = _AsyncBackend(
+2025-11-27T21:27:13.7942221Z             backend=backend, backend_options=backend_options or {}
+2025-11-27T21:27:13.7942494Z         )
+2025-11-27T21:27:13.7942658Z         if _is_asgi3(app):
+2025-11-27T21:27:13.7942866Z             app = typing.cast(ASGI3App, app)
+2025-11-27T21:27:13.7943100Z             asgi_app = app
+2025-11-27T21:27:13.7943283Z         else:
+2025-11-27T21:27:13.7943523Z             app = typing.cast(ASGI2App, app)  # type: ignore[assignment]
+2025-11-27T21:27:13.7943867Z             asgi_app = _WrapASGI2(app)  # type: ignore[arg-type]
+2025-11-27T21:27:13.7944255Z         self.app = asgi_app
+2025-11-27T21:27:13.7944502Z         self.app_state: typing.Dict[str, typing.Any] = {}
+2025-11-27T21:27:13.7944784Z         transport = _TestClientTransport(
+2025-11-27T21:27:13.7945019Z             self.app,
+2025-11-27T21:27:13.7945215Z             portal_factory=self._portal_factory,
+2025-11-27T21:27:13.7945525Z             raise_server_exceptions=raise_server_exceptions,
+2025-11-27T21:27:13.7945795Z             root_path=root_path,
+2025-11-27T21:27:13.7946017Z             app_state=self.app_state,
+2025-11-27T21:27:13.7946226Z         )
+2025-11-27T21:27:13.7946387Z         if headers is None:
+2025-11-27T21:27:13.7946576Z             headers = {}
+2025-11-27T21:27:13.7946805Z         headers.setdefault("user-agent", "testclient")
+2025-11-27T21:27:13.7947069Z >       super().__init__(
+2025-11-27T21:27:13.7947262Z             app=self.app,
+2025-11-27T21:27:13.7947456Z             base_url=base_url,
+2025-11-27T21:27:13.7947662Z             headers=headers,
+2025-11-27T21:27:13.7947866Z             transport=transport,
+2025-11-27T21:27:13.7948076Z             follow_redirects=True,
+2025-11-27T21:27:13.7948293Z             cookies=cookies,
+2025-11-27T21:27:13.7948669Z         )
+2025-11-27T21:27:13.7948953Z E       TypeError: Client.__init__() got an unexpected keyword argument 'app'
+2025-11-27T21:27:13.7949214Z 
+2025-11-27T21:27:13.7949520Z /opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/starlette/testclient.py:399: TypeError
+2025-11-27T21:27:13.7950066Z ________________ ERROR at setup of test_delete_nonexistent_file ________________
+2025-11-27T21:27:13.7950308Z 
+2025-11-27T21:27:13.7950415Z self = <Coroutine test_delete_nonexistent_file>
+2025-11-27T21:27:13.7950594Z 
+2025-11-27T21:27:13.7950671Z     def setup(self) -> None:
+2025-11-27T21:27:13.7950937Z         runner_fixture_id = f"_{self._loop_scope}_scoped_runner"
+2025-11-27T21:27:13.7951254Z         if runner_fixture_id not in self.fixturenames:
+2025-11-27T21:27:13.7951554Z             self.fixturenames.append(runner_fixture_id)
+2025-11-27T21:27:13.7951820Z >       return super().setup()
+2025-11-27T21:27:13.7952016Z                ^^^^^^^^^^^^^^^
+2025-11-27T21:27:13.7952137Z 
+2025-11-27T21:27:13.7952423Z /opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/pytest_asyncio/plugin.py:458: 
+2025-11-27T21:27:13.7952882Z _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+2025-11-27T21:27:13.7953418Z /opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/pytest_asyncio/plugin.py:730: in pytest_fixture_setup
+2025-11-27T21:27:13.7953906Z     return (yield)
+2025-11-27T21:27:13.7954077Z             ^^^^^
+2025-11-27T21:27:13.7954256Z tests/conftest.py:50: in client
+2025-11-27T21:27:13.7954467Z     with TestClient(app) as c:
+2025-11-27T21:27:13.7954797Z          ^^^^^^^^^^^^^^^
+2025-11-27T21:27:13.7955005Z _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+2025-11-27T21:27:13.7955203Z 
+2025-11-27T21:27:13.7955360Z self = <starlette.testclient.TestClient object at 0x7f1d27c24dd0>
+2025-11-27T21:27:13.7955740Z app = <fastapi.applications.FastAPI object at 0x7f1d2abb70d0>
+2025-11-27T21:27:13.7956145Z base_url = 'http://testserver', raise_server_exceptions = True, root_path = ''
+2025-11-27T21:27:13.7956540Z backend = 'asyncio', backend_options = None, cookies = None
+2025-11-27T21:27:13.7956837Z headers = {'user-agent': 'testclient'}
+2025-11-27T21:27:13.7957000Z 
+2025-11-27T21:27:13.7957069Z     def __init__(
+2025-11-27T21:27:13.7957228Z         self,
+2025-11-27T21:27:13.7957391Z         app: ASGIApp,
+2025-11-27T21:27:13.7957591Z         base_url: str = "http://testserver",
+2025-11-27T21:27:13.7957846Z         raise_server_exceptions: bool = True,
+2025-11-27T21:27:13.7958082Z         root_path: str = "",
+2025-11-27T21:27:13.7958298Z         backend: str = "asyncio",
+2025-11-27T21:27:13.7958840Z         backend_options: typing.Optional[typing.Dict[str, typing.Any]] = None,
+2025-11-27T21:27:13.7959336Z         cookies: httpx._client.CookieTypes = None,
+2025-11-27T21:27:13.7959607Z         headers: typing.Dict[str, str] = None,
+2025-11-27T21:27:13.7959833Z     ) -> None:
+2025-11-27T21:27:13.7960023Z         self.async_backend = _AsyncBackend(
+2025-11-27T21:27:13.7960318Z             backend=backend, backend_options=backend_options or {}
+2025-11-27T21:27:13.7960603Z         )
+2025-11-27T21:27:13.7960760Z         if _is_asgi3(app):
+2025-11-27T21:27:13.7960987Z             app = typing.cast(ASGI3App, app)
+2025-11-27T21:27:13.7961230Z             asgi_app = app
+2025-11-27T21:27:13.7961410Z         else:
+2025-11-27T21:27:13.7961649Z             app = typing.cast(ASGI2App, app)  # type: ignore[assignment]
+2025-11-27T21:27:13.7961985Z             asgi_app = _WrapASGI2(app)  # type: ignore[arg-type]
+2025-11-27T21:27:13.7962270Z         self.app = asgi_app
+2025-11-27T21:27:13.7962516Z         self.app_state: typing.Dict[str, typing.Any] = {}
+2025-11-27T21:27:13.7962804Z         transport = _TestClientTransport(
+2025-11-27T21:27:13.7963036Z             self.app,
+2025-11-27T21:27:13.7963239Z             portal_factory=self._portal_factory,
+2025-11-27T21:27:13.7963524Z             raise_server_exceptions=raise_server_exceptions,
+2025-11-27T21:27:13.7963794Z             root_path=root_path,
+2025-11-27T21:27:13.7964016Z             app_state=self.app_state,
+2025-11-27T21:27:13.7964223Z         )
+2025-11-27T21:27:13.7964380Z         if headers is None:
+2025-11-27T21:27:13.7964568Z             headers = {}
+2025-11-27T21:27:13.7964798Z         headers.setdefault("user-agent", "testclient")
+2025-11-27T21:27:13.7965054Z >       super().__init__(
+2025-11-27T21:27:13.7965245Z             app=self.app,
+2025-11-27T21:27:13.7965438Z             base_url=base_url,
+2025-11-27T21:27:13.7965637Z             headers=headers,
+2025-11-27T21:27:13.7965838Z             transport=transport,
+2025-11-27T21:27:13.7966050Z             follow_redirects=True,
+2025-11-27T21:27:13.7966265Z             cookies=cookies,
+2025-11-27T21:27:13.7966449Z         )
+2025-11-27T21:27:13.7966701Z E       TypeError: Client.__init__() got an unexpected keyword argument 'app'
+2025-11-27T21:27:13.7966953Z 
+2025-11-27T21:27:13.7967256Z /opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/starlette/testclient.py:399: TypeError
+2025-11-27T21:27:13.7967789Z _____________________ ERROR at setup of test_health_check ______________________
+2025-11-27T21:27:13.7968021Z 
+2025-11-27T21:27:13.7968112Z self = <Coroutine test_health_check>
+2025-11-27T21:27:13.7968266Z 
+2025-11-27T21:27:13.7968342Z     def setup(self) -> None:
+2025-11-27T21:27:13.7968831Z         runner_fixture_id = f"_{self._loop_scope}_scoped_runner"
+2025-11-27T21:27:13.7969149Z         if runner_fixture_id not in self.fixturenames:
+2025-11-27T21:27:13.7969446Z             self.fixturenames.append(runner_fixture_id)
+2025-11-27T21:27:13.7969838Z >       return super().setup()
+2025-11-27T21:27:13.7970034Z                ^^^^^^^^^^^^^^^
+2025-11-27T21:27:13.7970156Z 
+2025-11-27T21:27:13.7970441Z /opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/pytest_asyncio/plugin.py:458: 
+2025-11-27T21:27:13.7970902Z _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+2025-11-27T21:27:13.7971436Z /opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/pytest_asyncio/plugin.py:730: in pytest_fixture_setup
+2025-11-27T21:27:13.7971925Z     return (yield)
+2025-11-27T21:27:13.7972094Z             ^^^^^
+2025-11-27T21:27:13.7972277Z tests/conftest.py:50: in client
+2025-11-27T21:27:13.7972493Z     with TestClient(app) as c:
+2025-11-27T21:27:13.7972691Z          ^^^^^^^^^^^^^^^
+2025-11-27T21:27:13.7972899Z _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+2025-11-27T21:27:13.7973093Z 
+2025-11-27T21:27:13.7973252Z self = <starlette.testclient.TestClient object at 0x7f1d27c08a10>
+2025-11-27T21:27:13.7973635Z app = <fastapi.applications.FastAPI object at 0x7f1d2abb70d0>
+2025-11-27T21:27:13.7974049Z base_url = 'http://testserver', raise_server_exceptions = True, root_path = ''
+2025-11-27T21:27:13.7974554Z backend = 'asyncio', backend_options = None, cookies = None
+2025-11-27T21:27:13.7974851Z headers = {'user-agent': 'testclient'}
+2025-11-27T21:27:13.7975015Z 
+2025-11-27T21:27:13.7975089Z     def __init__(
+2025-11-27T21:27:13.7975248Z         self,
+2025-11-27T21:27:13.7975415Z         app: ASGIApp,
+2025-11-27T21:27:13.7975615Z         base_url: str = "http://testserver",
+2025-11-27T21:27:13.7975875Z         raise_server_exceptions: bool = True,
+2025-11-27T21:27:13.7976115Z         root_path: str = "",
+2025-11-27T21:27:13.7976324Z         backend: str = "asyncio",
+2025-11-27T21:27:13.7976641Z         backend_options: typing.Optional[typing.Dict[str, typing.Any]] = None,
+2025-11-27T21:27:13.7977001Z         cookies: httpx._client.CookieTypes = None,
+2025-11-27T21:27:13.7977280Z         headers: typing.Dict[str, str] = None,
+2025-11-27T21:27:13.7977501Z     ) -> None:
+2025-11-27T21:27:13.7977687Z         self.async_backend = _AsyncBackend(
+2025-11-27T21:27:13.7977981Z             backend=backend, backend_options=backend_options or {}
+2025-11-27T21:27:13.7978255Z         )
+2025-11-27T21:27:13.7978440Z         if _is_asgi3(app):
+2025-11-27T21:27:13.7978751Z             app = typing.cast(ASGI3App, app)
+2025-11-27T21:27:13.7978984Z             asgi_app = app
+2025-11-27T21:27:13.7979158Z         else:
+2025-11-27T21:27:13.7979388Z             app = typing.cast(ASGI2App, app)  # type: ignore[assignment]
+2025-11-27T21:27:13.7979722Z             asgi_app = _WrapASGI2(app)  # type: ignore[arg-type]
+2025-11-27T21:27:13.7979995Z         self.app = asgi_app
+2025-11-27T21:27:13.7980228Z         self.app_state: typing.Dict[str, typing.Any] = {}
+2025-11-27T21:27:13.7980511Z         transport = _TestClientTransport(
+2025-11-27T21:27:13.7980741Z             self.app,
+2025-11-27T21:27:13.7980942Z             portal_factory=self._portal_factory,
+2025-11-27T21:27:13.7981231Z             raise_server_exceptions=raise_server_exceptions,
+2025-11-27T21:27:13.7981503Z             root_path=root_path,
+2025-11-27T21:27:13.7981723Z             app_state=self.app_state,
+2025-11-27T21:27:13.7981928Z         )
+2025-11-27T21:27:13.7982087Z         if headers is None:
+2025-11-27T21:27:13.7982277Z             headers = {}
+2025-11-27T21:27:13.7982513Z         headers.setdefault("user-agent", "testclient")
+2025-11-27T21:27:13.7982769Z >       super().__init__(
+2025-11-27T21:27:13.7982958Z             app=self.app,
+2025-11-27T21:27:13.7983147Z             base_url=base_url,
+2025-11-27T21:27:13.7983343Z             headers=headers,
+2025-11-27T21:27:13.7983546Z             transport=transport,
+2025-11-27T21:27:13.7983753Z             follow_redirects=True,
+2025-11-27T21:27:13.7983966Z             cookies=cookies,
+2025-11-27T21:27:13.7984147Z         )
+2025-11-27T21:27:13.7984402Z E       TypeError: Client.__init__() got an unexpected keyword argument 'app'
+2025-11-27T21:27:13.7984777Z 
+2025-11-27T21:27:13.7985075Z /opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/starlette/testclient.py:399: TypeError
+2025-11-27T21:27:13.7985619Z _________________ ERROR at setup of test_upload_with_id_field __________________
+2025-11-27T21:27:13.7985857Z 
+2025-11-27T21:27:13.7985961Z self = <Coroutine test_upload_with_id_field>
+2025-11-27T21:27:13.7986132Z 
+2025-11-27T21:27:13.7986209Z     def setup(self) -> None:
+2025-11-27T21:27:13.7986469Z         runner_fixture_id = f"_{self._loop_scope}_scoped_runner"
+2025-11-27T21:27:13.7986781Z         if runner_fixture_id not in self.fixturenames:
+2025-11-27T21:27:13.7987081Z             self.fixturenames.append(runner_fixture_id)
+2025-11-27T21:27:13.7987348Z >       return super().setup()
+2025-11-27T21:27:13.7987546Z                ^^^^^^^^^^^^^^^
+2025-11-27T21:27:13.7987668Z 
+2025-11-27T21:27:13.7987948Z /opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/pytest_asyncio/plugin.py:458: 
+2025-11-27T21:27:13.7988412Z _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+2025-11-27T21:27:13.7989177Z /opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/pytest_asyncio/plugin.py:730: in pytest_fixture_setup
+2025-11-27T21:27:13.7989668Z     return (yield)
+2025-11-27T21:27:13.7989838Z             ^^^^^
+2025-11-27T21:27:13.7990020Z tests/conftest.py:50: in client
+2025-11-27T21:27:13.7990235Z     with TestClient(app) as c:
+2025-11-27T21:27:13.7990440Z          ^^^^^^^^^^^^^^^
+2025-11-27T21:27:13.7990652Z _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+2025-11-27T21:27:13.7990845Z 
+2025-11-27T21:27:13.7991000Z self = <starlette.testclient.TestClient object at 0x7f1d27dec5d0>
+2025-11-27T21:27:13.7991378Z app = <fastapi.applications.FastAPI object at 0x7f1d2abb70d0>
+2025-11-27T21:27:13.7991785Z base_url = 'http://testserver', raise_server_exceptions = True, root_path = ''
+2025-11-27T21:27:13.7992176Z backend = 'asyncio', backend_options = None, cookies = None
+2025-11-27T21:27:13.7992482Z headers = {'user-agent': 'testclient'}
+2025-11-27T21:27:13.7992640Z 
+2025-11-27T21:27:13.7992715Z     def __init__(
+2025-11-27T21:27:13.7992870Z         self,
+2025-11-27T21:27:13.7993030Z         app: ASGIApp,
+2025-11-27T21:27:13.7993225Z         base_url: str = "http://testserver",
+2025-11-27T21:27:13.7993484Z         raise_server_exceptions: bool = True,
+2025-11-27T21:27:13.7993716Z         root_path: str = "",
+2025-11-27T21:27:13.7993921Z         backend: str = "asyncio",
+2025-11-27T21:27:13.7994236Z         backend_options: typing.Optional[typing.Dict[str, typing.Any]] = None,
+2025-11-27T21:27:13.7994589Z         cookies: httpx._client.CookieTypes = None,
+2025-11-27T21:27:13.7994860Z         headers: typing.Dict[str, str] = None,
+2025-11-27T21:27:13.7995084Z     ) -> None:
+2025-11-27T21:27:13.7995269Z         self.async_backend = _AsyncBackend(
+2025-11-27T21:27:13.7995557Z             backend=backend, backend_options=backend_options or {}
+2025-11-27T21:27:13.7995843Z         )
+2025-11-27T21:27:13.7995997Z         if _is_asgi3(app):
+2025-11-27T21:27:13.7996211Z             app = typing.cast(ASGI3App, app)
+2025-11-27T21:27:13.7996450Z             asgi_app = app
+2025-11-27T21:27:13.7996630Z         else:
+2025-11-27T21:27:13.7996862Z             app = typing.cast(ASGI2App, app)  # type: ignore[assignment]
+2025-11-27T21:27:13.7997196Z             asgi_app = _WrapASGI2(app)  # type: ignore[arg-type]
+2025-11-27T21:27:13.7997468Z         self.app = asgi_app
+2025-11-27T21:27:13.7997703Z         self.app_state: typing.Dict[str, typing.Any] = {}
+2025-11-27T21:27:13.7997990Z         transport = _TestClientTransport(
+2025-11-27T21:27:13.7998223Z             self.app,
+2025-11-27T21:27:13.7998419Z             portal_factory=self._portal_factory,
+2025-11-27T21:27:13.7998929Z             raise_server_exceptions=raise_server_exceptions,
+2025-11-27T21:27:13.7999199Z             root_path=root_path,
+2025-11-27T21:27:13.7999418Z             app_state=self.app_state,
+2025-11-27T21:27:13.7999752Z         )
+2025-11-27T21:27:13.7999911Z         if headers is None:
+2025-11-27T21:27:13.8000098Z             headers = {}
+2025-11-27T21:27:13.8000329Z         headers.setdefault("user-agent", "testclient")
+2025-11-27T21:27:13.8000596Z >       super().__init__(
+2025-11-27T21:27:13.8000786Z             app=self.app,
+2025-11-27T21:27:13.8000975Z             base_url=base_url,
+2025-11-27T21:27:13.8001171Z             headers=headers,
+2025-11-27T21:27:13.8001374Z             transport=transport,
+2025-11-27T21:27:13.8001581Z             follow_redirects=True,
+2025-11-27T21:27:13.8001798Z             cookies=cookies,
+2025-11-27T21:27:13.8001980Z         )
+2025-11-27T21:27:13.8002236Z E       TypeError: Client.__init__() got an unexpected keyword argument 'app'
+2025-11-27T21:27:13.8002498Z 
+2025-11-27T21:27:13.8002800Z /opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/starlette/testclient.py:399: TypeError
+2025-11-27T21:27:13.8003282Z =================================== FAILURES ===================================
+2025-11-27T21:27:13.8003604Z _______________________________ test_process_csv _______________________________
+2025-11-27T21:27:13.8003933Z 
+2025-11-27T21:27:13.8004108Z tmp_path = PosixPath('/tmp/pytest-of-runner/pytest-0/test_process_csv0')
+2025-11-27T21:27:13.8004369Z 
+2025-11-27T21:27:13.8004450Z     @pytest.mark.asyncio
+2025-11-27T21:27:13.8004657Z     async def test_process_csv(tmp_path):
+2025-11-27T21:27:13.8004941Z         """Test CSV processing with basic fields and values."""
+2025-11-27T21:27:13.8005428Z         # cria CSV temporário
+2025-11-27T21:27:13.8005645Z         csv_file = tmp_path / "test.csv"
+2025-11-27T21:27:13.8005925Z         csv_file.write_text("field1,value1\nfield2,value2\n")
+2025-11-27T21:27:13.8006182Z     
+2025-11-27T21:27:13.8006350Z         # mock file_id e GridFS interaction
+2025-11-27T21:27:13.8006581Z         class MockGridFS:
+2025-11-27T21:27:13.8006786Z             def find(self, *args, **kwargs):
+2025-11-27T21:27:13.8007026Z                 class MockOut:
+2025-11-27T21:27:13.8007228Z                     def read(self):
+2025-11-27T21:27:13.8007461Z                         return csv_file.read_bytes()
+2025-11-27T21:27:13.8007712Z                 return [MockOut()]
+2025-11-27T21:27:13.8007947Z         csv_processor.fs_bucket = MockGridFS()
+2025-11-27T21:27:13.8008171Z     
+2025-11-27T21:27:13.8008313Z         # mock db
+2025-11-27T21:27:13.8008848Z         csv_processor.db = type("DB", (), {"files": type("F", (), {"update_one": lambda *a, **k: None})()})()
+2025-11-27T21:27:13.8009207Z     
+2025-11-27T21:27:13.8009410Z >       records = await csv_processor.process_csv("mock_id")
+2025-11-27T21:27:13.8009698Z                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-27T21:27:13.8009859Z 
+2025-11-27T21:27:13.8009954Z tests/unit/test_csv_processor.py:42: 
+2025-11-27T21:27:13.8010214Z _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+2025-11-27T21:27:13.8010411Z 
+2025-11-27T21:27:13.8010498Z file_id = 'mock_id', id_field = None
+2025-11-27T21:27:13.8010651Z 
+2025-11-27T21:27:13.8010784Z     async def process_csv(file_id: str, id_field: str = None):
+2025-11-27T21:27:13.8011134Z >       doc = await db.files.find_one({"_id": ObjectId(file_id)})
+2025-11-27T21:27:13.8011418Z                     ^^^^^^^^^^^^^^^^^
+2025-11-27T21:27:13.8011683Z E       AttributeError: 'F' object has no attribute 'find_one'
+2025-11-27T21:27:13.8011892Z 
+2025-11-27T21:27:13.8012030Z backend/app/services/csv_processor.py:8: AttributeError
+2025-11-27T21:27:13.8012390Z _______________________ test_process_csv_with_injection ________________________
+2025-11-27T21:27:13.8012633Z 
+2025-11-27T21:27:13.8012849Z tmp_path = PosixPath('/tmp/pytest-of-runner/pytest-0/test_process_csv_with_injectio0')
+2025-11-27T21:27:13.8013154Z 
+2025-11-27T21:27:13.8013238Z     @pytest.mark.asyncio
+2025-11-27T21:27:13.8013475Z     async def test_process_csv_with_injection(tmp_path):
+2025-11-27T21:27:13.8013792Z         """Test CSV processing sanitizes dangerous values."""
+2025-11-27T21:27:13.8014208Z         csv_file = tmp_path / "injection.csv"
+2025-11-27T21:27:13.8014543Z         csv_file.write_text("formula,=MALICIOUS()\nemail,+CMD\nname,@SYSTEM\n")
+2025-11-27T21:27:13.8014860Z     
+2025-11-27T21:27:13.8015017Z         class MockGridFS:
+2025-11-27T21:27:13.8015225Z             def find(self, *args, **kwargs):
+2025-11-27T21:27:13.8015464Z                 class MockOut:
+2025-11-27T21:27:13.8015672Z                     def read(self):
+2025-11-27T21:27:13.8015906Z                         return csv_file.read_bytes()
+2025-11-27T21:27:13.8016155Z                 return [MockOut()]
+2025-11-27T21:27:13.8016390Z         csv_processor.fs_bucket = MockGridFS()
+2025-11-27T21:27:13.8016624Z     
+2025-11-27T21:27:13.8016909Z         csv_processor.db = type("DB", (), {"files": type("F", (), {"update_one": lambda *a, **k: None})()})()
+2025-11-27T21:27:13.8017261Z     
+2025-11-27T21:27:13.8017463Z >       records = await csv_processor.process_csv("mock_id")
+2025-11-27T21:27:13.8017757Z                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-27T21:27:13.8017917Z 
+2025-11-27T21:27:13.8018016Z tests/unit/test_csv_processor.py:62: 
+2025-11-27T21:27:13.8018388Z _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+2025-11-27T21:27:13.8018693Z 
+2025-11-27T21:27:13.8018774Z file_id = 'mock_id', id_field = None
+2025-11-27T21:27:13.8018926Z 
+2025-11-27T21:27:13.8019057Z     async def process_csv(file_id: str, id_field: str = None):
+2025-11-27T21:27:13.8019401Z >       doc = await db.files.find_one({"_id": ObjectId(file_id)})
+2025-11-27T21:27:13.8019681Z                     ^^^^^^^^^^^^^^^^^
+2025-11-27T21:27:13.8019942Z E       AttributeError: 'F' object has no attribute 'find_one'
+2025-11-27T21:27:13.8020148Z 
+2025-11-27T21:27:13.8020287Z backend/app/services/csv_processor.py:8: AttributeError
+2025-11-27T21:27:13.8020607Z =========================== short test summary info ============================
+2025-11-27T21:27:13.8021154Z FAILED tests/unit/test_csv_processor.py::test_process_csv - AttributeError: 'F' object has no attribute 'find_one'
+2025-11-27T21:27:13.8021889Z FAILED tests/unit/test_csv_processor.py::test_process_csv_with_injection - AttributeError: 'F' object has no attribute 'find_one'
+2025-11-27T21:27:13.8022674Z ERROR tests/integration/test_api_files.py::test_upload_file - TypeError: Client.__init__() got an unexpected keyword argument 'app'
+2025-11-27T21:27:13.8023499Z ERROR tests/integration/test_api_files.py::test_upload_file_with_injection - TypeError: Client.__init__() got an unexpected keyword argument 'app'
+2025-11-27T21:27:13.8024365Z ERROR tests/integration/test_api_files.py::test_upload_file_invalid_extension - TypeError: Client.__init__() got an unexpected keyword argument 'app'
+2025-11-27T21:27:13.8025256Z ERROR tests/integration/test_api_files.py::test_upload_file_invalid_content_type - TypeError: Client.__init__() got an unexpected keyword argument 'app'
+2025-11-27T21:27:13.8026085Z ERROR tests/integration/test_api_files.py::test_list_files - TypeError: Client.__init__() got an unexpected keyword argument 'app'
+2025-11-27T21:27:13.8026854Z ERROR tests/integration/test_api_files.py::test_upload_and_list - TypeError: Client.__init__() got an unexpected keyword argument 'app'
+2025-11-27T21:27:13.8028045Z ERROR tests/integration/test_api_files.py::test_delete_file - TypeError: Client.__init__() got an unexpected keyword argument 'app'
+2025-11-27T21:27:13.8393255Z ERROR tests/integration/test_api_files.py::test_delete_nonexistent_file - TypeError: Client.__init__() got an unexpected keyword argument 'app'
+2025-11-27T21:27:13.8394431Z ERROR tests/integration/test_api_files.py::test_health_check - TypeError: Client.__init__() got an unexpected keyword argument 'app'
+2025-11-27T21:27:13.8395468Z ERROR tests/integration/test_api_files.py::test_upload_with_id_field - TypeError: Client.__init__() got an unexpected keyword argument 'app'
+2025-11-27T21:27:13.8396214Z ==================== 2 failed, 5 passed, 10 errors in 0.34s ====================
+2025-11-27T21:27:13.8989588Z ##[error]Process completed with exit code 1.
+2025-11-27T21:27:13.9001880Z ##[debug]Finishing: Run tests
