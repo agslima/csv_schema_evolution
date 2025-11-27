@@ -25,11 +25,13 @@ Resumo curto: este repositório expõe uma API de upload/processing de CSVs (bac
 - Erros: o backend usa `fastapi.HTTPException` para validações (veja `validators.py`) e lança `ValueError` em casos internos que o agente deve propagar ou traduzir para 5xx/4xx conforme contexto.
 
 ## Comandos úteis / workflows
-- Rodar todos os testes: `pytest -v` (pasta `tests/` com `unit/` e `integration/`).
+- Rodar testes simples (sem pytest hanging): `python run_tests.py` (testes básicos de sanitização e validadores).
+- Rodar todos os testes com pytest: `pytest -v` (pasta `tests/` com `unit/` e `integration/`).
+  - **Nota**: testes de integração requerem MongoDB rodando; use `docker-compose up` para ambiente completo.
 - Subir ambiente completo (recomendado para desenvolvimento):
   - `docker-compose up --build` (arquivo na raiz `docker-compose.yml`).
 - Executar localmente o backend (se preferir sem Docker): usar Uvicorn apontando para o módulo FastAPI:
-  - `uvicorn app.main:app --reload --host 0.0.0.0 --port 8000` (execute com `cwd=backend/` e ambiente Python ativado).
+  - `cd backend && uvicorn app.main:app --reload --host 0.0.0.0 --port 8000` (ambiente Python ativado, MongoDB acessível).
 - CI: referência `.github/workflows/ci.yml` (instala dependências e roda `pytest` + build docker). Alinhe mudanças de dependência com `backend/requirements.txt`.
 
 ## Integrações e pontos de atenção
@@ -59,12 +61,117 @@ records = await process_csv(file_id, id_field=None)
 - Acesso a GridFS / mudanças de schema → `backend/app/db/mongo.py` e `backend/app/services/storage.py`.
 
 ## Testes e debugging rápidos
-- Unit tests: `tests/unit/` — comece por `test_csv_processor.py` ao alterar parsing/sanitize.
-- Integration tests: `tests/integration/test_api_files.py` para cenários upload → process → download.
-- Logs: aplicar prints/`logging` no serviço alterado e rodar `docker-compose up` ou `uvicorn` para reproduzir.
+- Testes básicos sem DB: `python run_tests.py` — valida `sanitize_value`, tamanho máximo e constantes.
+- Unit tests: `tests/unit/` — testes isolados de sanitização e processamento CSV (com mocks).
+- Integration tests: `tests/integration/test_api_files.py` — cenários upload → process → delete/download (requer MongoDB).
+- Logs: adicione `print()` ou `logging` no serviço alterado e rode `docker-compose up` ou `uvicorn` com `--reload` para reproduzir.
 
-## Observações / inconsistências notadas
-- O `README.md` descreve uma versão Flask do app; o código atual usa **FastAPI**. Prefira confiar nos arquivos dentro de `backend/app/` para determinar runtime e rotas.
+## Exemplos de Requests HTTP
 
----
-Se quiser, atualizo exemplos de request/responses usando os handlers em `backend/app/api/v1/files.py` ou adiciono snippets de testes `pytest` para validar mudanças. Quais partes você quer que eu detalhe mais? 
+Todos os exemplos usam `BASE_URL=http://localhost:8000` (ajuste conforme necessário).
+
+### Upload (POST /api/v1/files/upload)
+```bash
+# Sem id_field
+curl -X POST "http://localhost:8000/api/v1/files/upload" \
+  -F "file=@myfile.csv"
+
+# Com id_field (query param)
+curl -X POST "http://localhost:8000/api/v1/files/upload?id_field=record_id" \
+  -F "file=@myfile.csv"
+```
+
+**Resposta (200 OK)**
+```json
+{
+  "id": "654f7a2b9c1e4b3a...",
+  "filename": "myfile.csv",
+  "status": "processed",
+  "records_count": 12,
+  "fields": ["name", "email", "created_at"]
+}
+```
+
+### Listar Arquivos (GET /api/v1/files/)
+```bash
+curl "http://localhost:8000/api/v1/files/"
+```
+
+**Resposta**
+```json
+[
+  {
+    "id": "654f7a2b9c1e4b3a...",
+    "filename": "myfile.csv",
+    "status": "processed",
+    "records_count": 12,
+    "fields": ["name","email","created_at"]
+  }
+]
+```
+
+### Download (GET /api/v1/files/{file_id}/download)
+```bash
+curl -OJ "http://localhost:8000/api/v1/files/654f7a2b9c1e4b3a.../download"
+```
+
+### Deletar (DELETE /api/v1/files/{file_id})
+```bash
+curl -X DELETE "http://localhost:8000/api/v1/files/654f7a2b9c1e4b3a..."
+```
+
+**Resposta (200 OK)**
+```json
+{"status":"deleted"}
+```
+
+### Health Check (GET /api/v1/health/)
+```bash
+curl "http://localhost:8000/api/v1/health/"
+```
+
+**Resposta**
+```json
+{"status":"ok"}
+```
+
+### JavaScript (Browser) — Upload com FormData
+```javascript
+const BASE_URL = "http://localhost:8000";
+
+async function uploadFile(file, idField = null) {
+  const form = new FormData();
+  form.append("file", file);
+
+  const url = new URL(`${BASE_URL}/api/v1/files/upload`);
+  if (idField) url.searchParams.append("id_field", idField);
+
+  const res = await fetch(url.toString(), { method: "POST", body: form });
+  if (!res.ok) throw new Error(`Upload failed: ${res.statusText}`);
+  return res.json();
+}
+
+// Uso:
+// uploadFile(fileInput.files[0], "record_id").then(console.log);
+```
+
+### Node.js — Upload com axios + FormData
+```javascript
+const axios = require("axios");
+const fs = require("fs");
+const FormData = require("form-data");
+
+async function uploadFile(path, idField) {
+  const form = new FormData();
+  form.append("file", fs.createReadStream(path));
+  const url = `http://localhost:8000/api/v1/files/upload${idField ? `?id_field=${idField}` : ""}`;
+  const res = await axios.post(url, form, { headers: form.getHeaders() });
+  return res.data;
+}
+```
+
+## Observações / Detalhes Técnicos
+- O `README.md` menciona "Flask"; o código atual usa **FastAPI**. Ignore a documentação desatualizada e confie na implementação em `backend/app/`.
+- O upload é processado **sincronamente** — o endpoint aguarda `process_csv` terminar antes de retornar, bloqueando para arquivos grandes.
+- CSV Injection: células com prefixo `=`, `+`, `-`, `@` são sanitizadas com `'` em `sanitize.py`; veja fluxo em `csv_processor.py`.
+- GridFS: metadados são salvos na coleção `db.files` com campos `status`, `fields`, `records_count`. 

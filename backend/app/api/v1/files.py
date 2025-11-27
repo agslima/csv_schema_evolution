@@ -3,6 +3,7 @@ from app.services import storage, csv_processor
 from app.models.file_models import FileResponse
 from app.utils.validators import validate_csv_file
 from fastapi.responses import StreamingResponse
+from app.db.mongo import db
 import io
 from bson import ObjectId
 
