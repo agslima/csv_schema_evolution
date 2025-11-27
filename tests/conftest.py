@@ -71,9 +71,10 @@ from app.main import app
 
 @pytest.fixture
 def client():
-    """Create test client with mocked MongoDB."""
-    with TestClient(app) as c:
-        yield c
+    """Create test client with mocked MongoDB - works with Starlette 0.36+"""
+    # TestClient in newer versions doesn't support context manager
+    # Just return the client directly
+    return TestClient(app)
 
 # Register cleanup
 def pytest_configure(config):
