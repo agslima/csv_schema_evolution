@@ -24,6 +24,7 @@ def test_sanitize_value_edge_cases():
 async def test_process_csv(tmp_path):
     """Test CSV processing with basic fields and values."""
     from unittest.mock import MagicMock, AsyncMock, patch
+    from bson import ObjectId
     
     csv_file = tmp_path / "test.csv"
     csv_file.write_text("field1,value1\nfield2,value2\n")
@@ -34,8 +35,14 @@ async def test_process_csv(tmp_path):
     mock_out.read.return_value = csv_file.read_bytes()
     mock_fs_bucket.find.return_value = [mock_out]
 
-    # Mock db.files.update_one
+    # Mock db with all required methods
     mock_db = MagicMock()
+    mock_db.files = MagicMock()
+    mock_db.files.find_one = AsyncMock(return_value={
+        "_id": ObjectId(),
+        "filename": "test.csv",
+        "status": "pending"
+    })
     mock_db.files.update_one = AsyncMock()
 
     with patch('app.db.mongo.fs_bucket', mock_fs_bucket):
@@ -48,6 +55,7 @@ async def test_process_csv(tmp_path):
 async def test_process_csv_with_injection(tmp_path):
     """Test CSV processing sanitizes dangerous values."""
     from unittest.mock import MagicMock, AsyncMock, patch
+    from bson import ObjectId
     
     csv_file = tmp_path / "injection.csv"
     csv_file.write_text("formula,=MALICIOUS()\nemail,+CMD\nname,@SYSTEM\n")
@@ -58,8 +66,14 @@ async def test_process_csv_with_injection(tmp_path):
     mock_out.read.return_value = csv_file.read_bytes()
     mock_fs_bucket.find.return_value = [mock_out]
 
-    # Mock db.files.update_one
+    # Mock db with all required methods
     mock_db = MagicMock()
+    mock_db.files = MagicMock()
+    mock_db.files.find_one = AsyncMock(return_value={
+        "_id": ObjectId(),
+        "filename": "injection.csv",
+        "status": "pending"
+    })
     mock_db.files.update_one = AsyncMock()
 
     with patch('app.db.mongo.fs_bucket', mock_fs_bucket):
