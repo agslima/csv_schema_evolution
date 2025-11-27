@@ -45,8 +45,9 @@ async def test_process_csv(tmp_path):
     })
     mock_db.files.update_one = AsyncMock()
 
-    with patch('app.db.mongo.fs_bucket', mock_fs_bucket):
-        with patch('app.db.mongo.db', mock_db):
+    # Patch in the csv_processor module where it's imported
+    with patch('app.services.csv_processor.fs_bucket', mock_fs_bucket):
+        with patch('app.services.csv_processor.db', mock_db):
             records = await csv_processor.process_csv("mock_id")
             assert len(records) == 1
             assert records[0]["field1"] == "value1"
@@ -76,9 +77,13 @@ async def test_process_csv_with_injection(tmp_path):
     })
     mock_db.files.update_one = AsyncMock()
 
-    with patch('app.db.mongo.fs_bucket', mock_fs_bucket):
-        with patch('app.db.mongo.db', mock_db):
+    # Patch in the csv_processor module where it's imported
+    with patch('app.services.csv_processor.fs_bucket', mock_fs_bucket):
+        with patch('app.services.csv_processor.db', mock_db):
             records = await csv_processor.process_csv("mock_id")
+            assert records[0]["formula"] == "'=MALICIOUS()"
+            assert records[1]["email"] == "'+CMD"
+            assert records[2]["name"] == "'@SYSTEM"
             assert records[0]["formula"] == "'=MALICIOUS()"
             assert records[1]["email"] == "'+CMD"
             assert records[2]["name"] == "'@SYSTEM"

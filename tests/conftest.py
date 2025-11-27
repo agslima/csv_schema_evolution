@@ -35,20 +35,32 @@ mock_fs_bucket.open_download_stream_by_name = MagicMock()
 mock_fs_bucket.find = MagicMock(return_value=[])
 mock_fs_bucket.delete = MagicMock()
 
-# Apply patches globally and keep them active
-with patch('app.db.mongo.client', mock_client):
-    with patch('app.db.mongo.db', mock_db):
-        with patch('app.db.mongo.fs_bucket', mock_fs_bucket):
-            # Import app AFTER patches are active
-            from fastapi.testclient import TestClient as _TestClient
-            from app.main import app as _app
-            
-            # Store references at module level
-            TestClient = _TestClient
-            app = _app
+# Start patches before importing app
+patcher_client = patch('app.db.mongo.client', mock_client)
+patcher_db = patch('app.db.mongo.db', mock_db)
+patcher_fs = patch('app.db.mongo.fs_bucket', mock_fs_bucket)
+
+patcher_client.start()
+patcher_db.start()
+patcher_fs.start()
+
+# Import app AFTER patches are started
+from fastapi.testclient import TestClient
+from app.main import app
 
 @pytest.fixture
 def client():
     """Create test client with mocked MongoDB."""
     return TestClient(app)
+
+# Register cleanup
+def pytest_configure(config):
+    """Register finalizer to stop patches."""
+    def stop_patches():
+        patcher_client.stop()
+        patcher_db.stop()
+        patcher_fs.stop()
+    config.addinivalue_line("markers", "cleanup")
+    
+pytest.register_assert_rewrite("conftest")
 
