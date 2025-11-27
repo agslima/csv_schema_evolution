@@ -36,8 +36,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r backend/requirements.txt
-          # The fix: Quotes added around "httpx<0.24" to prevent shell redirection errors
-          pip install pytest pytest-asyncio "httpx<0.24"
+          pip install -r backend/requirements-dev.txt
 
       - name: Wait for MongoDB to be ready
         run: |
@@ -54,9 +53,10 @@ jobs:
 
       - name: Run tests
         run: |
-          export PYTHONPATH=/github/workspace/backend:$PYTHONPATH
+          export PYTHONPATH=$PYTHONPATH:$(pwd)/backend
           pytest tests/ -v --asyncio-mode=auto
 
       - name: Build Docker image
         run: |
           docker build -t csv-uploader ./backend
+          
