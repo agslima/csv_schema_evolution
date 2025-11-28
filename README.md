@@ -1,8 +1,8 @@
-# CSV Uploader – Full Stack App (FastAPI + MongoDB)
+# CSV Ingestion & Processing Engine – Full Stack App (FastAPI + MongoDB)
 
 ![Status](https://github.com/agslima/csv_schema_evolution/actions/workflows/ci.yml/badge.svg)
 
-Aplicação web para **upload, processamento e download de arquivos CSV**, com:
+This project demonstrates a production-ready architecture for handling data ingestion. It goes beyond simple file uploads by implementing security sanitization (prevention of CSV Injection), dynamic schema generation, and scalable storage using MongoDB GridFS.
 
 - UI moderna e responsiva.
 - Barra de progresso e mensagens visuais.
