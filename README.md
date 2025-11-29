@@ -4,14 +4,6 @@
 
 This project demonstrates a production-ready architecture for handling data ingestion. It goes beyond simple file uploads by implementing security sanitization (prevention of CSV Injection), dynamic schema generation, and scalable storage using MongoDB GridFS.
 
-- UI moderna e responsiva.
-- Barra de progresso e mensagens visuais.
-- Paginação e busca na lista de arquivos.
-- Backend seguro em **FastAPI** (async).
-- Armazenamento de arquivos no **MongoDB (GridFS)**.
-- Testes automatizados com **pytest**.
-- Workflow de CI/CD com **GitHub Actions**.
-- Docker Compose para ambiente completo.
 
 ---
 
