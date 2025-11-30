@@ -181,7 +181,6 @@ async function uploadFile(path, idField) {
 ```
 
 ## Observações / Detalhes Técnicos
-- O `README.md` menciona "Flask"; o código atual usa **FastAPI**. Ignore a documentação desatualizada e confie na implementação em `backend/app/`.
 - O upload é processado **sincronamente** — o endpoint aguarda `process_csv` terminar antes de retornar, bloqueando para arquivos grandes.
 - CSV Injection: células com prefixo `=`, `+`, `-`, `@` são sanitizadas com `'` em `sanitize.py`; veja fluxo em `csv_processor.py`.
 - GridFS: metadados são salvos na coleção `db.files` com campos `status`, `fields`, `records_count`. 
